@@ -1,0 +1,9 @@
+CREATE COMPUTE MODULE Build_HTML
+	CREATE FUNCTION Main() RETURNS BOOLEAN
+	BEGIN
+		DECLARE html CHARACTER '<!DOCTYPE html><html><head><title>Hello World</title></head><body>Hello World!!! I am a Flow!!!</body></html> EG: ' || ExecutionGroupLabel || ' </body></html>'; 
+		DECLARE newBLOB BLOB; 
+		SET newBLOB = CAST(html AS BLOB CCSID 1208); 
+		SET OutputRoot.BLOB.BLOB = newBLOB ; 		
+		RETURN TRUE;
+	END;END MODULE;
